@@ -17,10 +17,10 @@ import { useTasks } from "@/hooks/use-tasks";
 import type { Task } from "@/lib/db/schema";
 import type { Status } from "@/lib/types";
 
-const COLUMNS: { id: Status; title: string; emoji: string; badgeColor: string }[] = [
-  { id: "todo", title: "Cần làm", emoji: "📋", badgeColor: "bg-slate-500" },
-  { id: "in_progress", title: "Đang làm", emoji: "🔄", badgeColor: "bg-blue-600" },
-  { id: "done", title: "Hoàn thành", emoji: "✅", badgeColor: "bg-emerald-500" },
+const COLUMNS: { id: Status; title: string; emoji: string; badgeColor: string; bgColor: string }[] = [
+  { id: "todo", title: "Công việc cần làm", emoji: "📋", badgeColor: "bg-slate-500", bgColor: "bg-slate-50/80 border-slate-100" },
+  { id: "in_progress", title: "Đang thực hiện", emoji: "🔄", badgeColor: "bg-blue-600", bgColor: "bg-blue-50/80 border-blue-100" },
+  { id: "done", title: "Đã hoàn thành", emoji: "✅", badgeColor: "bg-emerald-500", bgColor: "bg-emerald-50/80 border-emerald-100" },
 ];
 
 export function KanbanBoard() {
@@ -168,7 +168,7 @@ export function KanbanBoard() {
           {columns.map((col) => (
             <div
               key={col.id}
-              className="bg-slate-50/80 rounded-2xl p-4 border border-slate-100 min-w-[280px] md:min-w-0 snap-center"
+              className={`${col.bgColor} rounded-2xl p-4 border min-w-[280px] md:min-w-0 snap-center`}
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
@@ -184,9 +184,8 @@ export function KanbanBoard() {
                   <div
                     ref={provided.innerRef}
                     {...provided.droppableProps}
-                    className={`space-y-2.5 min-h-[120px] rounded-xl transition-colors p-1 ${
-                      snapshot.isDraggingOver ? "bg-blue-50/60" : ""
-                    }`}
+                    className={`space-y-2.5 min-h-[120px] rounded-xl transition-colors p-1 ${snapshot.isDraggingOver ? "bg-blue-50/60" : ""
+                      }`}
                   >
                     {col.tasks.map((task, index) => (
                       <Draggable
