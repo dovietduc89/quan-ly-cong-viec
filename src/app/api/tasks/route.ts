@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { tasks } from "@/lib/db/schema";
-import { eq, isNull, and, desc } from "drizzle-orm";
+import { eq, isNull, and, asc } from "drizzle-orm";
 import { z } from "zod";
 
 const createTaskSchema = z.object({
@@ -36,7 +36,7 @@ export async function GET() {
     .select()
     .from(tasks)
     .where(isNull(tasks.deletedAt))
-    .orderBy(desc(tasks.createdAt));
+    .orderBy(asc(tasks.position), asc(tasks.createdAt));
 
   return NextResponse.json(result);
 }

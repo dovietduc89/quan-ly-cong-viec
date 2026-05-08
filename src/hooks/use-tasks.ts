@@ -87,5 +87,16 @@ export function useTasks() {
     return true;
   };
 
-  return { tasks, loading, error, createTask, updateTask, deleteTask, refetch: fetchTasks };
+  const reorderTask = async (taskId: string, status: string, orderedIds: string[]) => {
+    const res = await fetch("/api/tasks/reorder", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ taskId, status, orderedIds }),
+    });
+    if (!res.ok) return false;
+    await fetchTasks();
+    return true;
+  };
+
+  return { tasks, loading, error, createTask, updateTask, deleteTask, reorderTask, refetch: fetchTasks };
 }

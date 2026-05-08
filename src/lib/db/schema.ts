@@ -1,4 +1,4 @@
-import { pgTable, uuid, text, timestamp, boolean } from "drizzle-orm/pg-core";
+import { pgTable, uuid, text, timestamp, boolean, integer } from "drizzle-orm/pg-core";
 
 export const tasks = pgTable("tasks", {
   id: uuid("id").defaultRandom().primaryKey(),
@@ -11,6 +11,7 @@ export const tasks = pgTable("tasks", {
   status: text("status", { enum: ["todo", "in_progress", "done"] })
     .notNull()
     .default("todo"),
+  position: integer("position").notNull().default(0),
   deadline: timestamp("deadline", { withTimezone: true }),
   reminderSent: boolean("reminder_sent").default(false),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),

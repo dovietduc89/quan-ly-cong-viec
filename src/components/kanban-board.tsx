@@ -24,7 +24,7 @@ const COLUMNS: { id: Status; title: string; emoji: string; gradient: string }[] 
 ];
 
 export function KanbanBoard() {
-  const { tasks, loading, error, createTask, updateTask, deleteTask } = useTasks();
+  const { tasks, loading, error, createTask, updateTask, deleteTask, reorderTask } = useTasks();
   const [formOpen, setFormOpen] = useState(false);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [filters, setFilters] = useState<TaskFilters>({
@@ -48,18 +48,41 @@ export function KanbanBoard() {
     });
   }, [tasks, filters]);
 
+  const [localOrder, setLocalOrder] = useState<Record<string, Task[]>>({});
+
   const columns = useMemo(() => {
-    return COLUMNS.map((col) => ({
-      ...col,
-      tasks: filteredTasks.filter((t) => t.status === col.id),
-    }));
-  }, [filteredTasks]);
+    return COLUMNS.map((col) => {
+      const colTasks = localOrder[col.id] || filteredTasks.filter((t) => t.status === col.id);
+      return { ...col, tasks: colTasks };
+    });
+  }, [filteredTasks, localOrder]);
 
   const handleDragEnd = (result: DropResult) => {
     if (!result.destination) return;
-    const { draggableId, destination } = result;
-    const newStatus = destination.droppableId as Status;
-    updateTask(draggableId, { status: newStatus });
+    const { draggableId, source, destination } = result;
+    const srcStatus = source.droppableId as Status;
+    const destStatus = destination.droppableId as Status;
+
+    const srcTasks = [...(localOrder[srcStatus] || filteredTasks.filter((t) => t.status === srcStatus))];
+    const destTasks = srcStatus === destStatus
+      ? srcTasks
+      : [...(localOrder[destStatus] || filteredTasks.filter((t) => t.status === destStatus))];
+
+    const [moved] = srcTasks.splice(source.index, 1);
+    if (!moved) return;
+
+    const movedTask = { ...moved, status: destStatus };
+    destTasks.splice(destination.index, 0, movedTask);
+
+    setLocalOrder((prev) => ({
+      ...prev,
+      [srcStatus]: srcStatus === destStatus ? destTasks : srcTasks,
+      [destStatus]: destTasks,
+    }));
+
+    reorderTask(draggableId, destStatus, destTasks.map((t) => t.id)).then(() => {
+      setLocalOrder({});
+    });
   };
 
   const handleSubmit = async (data: {
