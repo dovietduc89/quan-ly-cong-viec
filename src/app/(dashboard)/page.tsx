@@ -98,7 +98,7 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className={`border border-amber-200 shadow-sm hover:shadow-md transition-shadow ${overdue.length > 0 ? "bg-amber-50" : "bg-white"}`}>
+        <Card className={`border border-amber-100 shadow-sm hover:shadow-md transition-shadow ${overdue.length > 0 ? "bg-amber-50" : "bg-white"}`}>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-base font-semibold text-muted-foreground">Quá hạn</CardTitle>
             <div className="h-9 w-9 rounded-xl bg-amber-100 flex items-center justify-center">
@@ -197,7 +197,7 @@ export default async function DashboardPage() {
                   key={t.id}
                   className="flex items-center justify-between p-3 rounded-xl bg-amber-50 text-sm"
                 >
-                  <span className="font-medium text-amber-600">{t.title}</span>
+                  <span className="text-amber-600 text-sm font-semibold">{t.title}</span>
                   <span className="text-amber-600 text-sm font-semibold">
                     {t.deadline ? format(new Date(t.deadline), "dd/MM/yyyy", { locale: vi }) : ""}
                   </span>
