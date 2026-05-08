@@ -1,0 +1,215 @@
+"use client";
+
+import { useState, useMemo } from "react";
+import {
+  DragDropContext,
+  Droppable,
+  Draggable,
+  type DropResult,
+} from "@hello-pangea/dnd";
+import { Plus, Search } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { TaskCard } from "@/components/task-card";
+import { TaskForm } from "@/components/task-form";
+import { TaskFiltersBar, type TaskFilters } from "@/components/task-filters";
+import { useTasks } from "@/hooks/use-tasks";
+import type { Task } from "@/lib/db/schema";
+import type { Status } from "@/lib/types";
+
+const COLUMNS: { id: Status; title: string; emoji: string; gradient: string }[] = [
+  { id: "todo", title: "Cần làm", emoji: "📋", gradient: "from-slate-400 to-slate-500" },
+  { id: "in_progress", title: "Đang làm", emoji: "🔄", gradient: "from-blue-400 to-indigo-500" },
+  { id: "done", title: "Hoàn thành", emoji: "✅", gradient: "from-emerald-400 to-green-500" },
+];
+
+export function KanbanBoard() {
+  const { tasks, loading, error, createTask, updateTask, deleteTask } = useTasks();
+  const [formOpen, setFormOpen] = useState(false);
+  const [editingTask, setEditingTask] = useState<Task | null>(null);
+  const [filters, setFilters] = useState<TaskFilters>({
+    category: "all",
+    priority: "all",
+    search: "",
+  });
+
+  const filteredTasks = useMemo(() => {
+    return tasks.filter((t) => {
+      if (filters.category !== "all" && t.category !== filters.category)
+        return false;
+      if (filters.priority !== "all" && t.priority !== filters.priority)
+        return false;
+      if (
+        filters.search &&
+        !t.title.toLowerCase().includes(filters.search.toLowerCase())
+      )
+        return false;
+      return true;
+    });
+  }, [tasks, filters]);
+
+  const columns = useMemo(() => {
+    return COLUMNS.map((col) => ({
+      ...col,
+      tasks: filteredTasks.filter((t) => t.status === col.id),
+    }));
+  }, [filteredTasks]);
+
+  const handleDragEnd = (result: DropResult) => {
+    if (!result.destination) return;
+    const { draggableId, destination } = result;
+    const newStatus = destination.droppableId as Status;
+    updateTask(draggableId, { status: newStatus });
+  };
+
+  const handleSubmit = async (data: {
+    title: string;
+    description?: string;
+    category: "work" | "personal";
+    priority: "high" | "medium" | "low";
+    status?: "todo" | "in_progress" | "done";
+    deadline?: string | null;
+  }) => {
+    if (editingTask) {
+      await updateTask(editingTask.id, data);
+    } else {
+      await createTask(data);
+    }
+  };
+
+  const handleEdit = (task: Task) => {
+    setEditingTask(task);
+    setFormOpen(true);
+  };
+
+  const handleClose = () => {
+    setFormOpen(false);
+    setEditingTask(null);
+  };
+
+  const handleDelete = (id: string) => {
+    if (window.confirm("Bạn có chắc muốn xoá công việc này?")) {
+      deleteTask(id);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="animate-spin rounded-full h-8 w-8 border-2 border-indigo-200 border-t-indigo-600" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col items-center justify-center h-64 gap-3">
+        <p className="text-rose-600 font-medium">{error}</p>
+        <Button variant="outline" onClick={() => window.location.reload()}>Thử lại</Button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-5">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
+        <div className="flex items-center gap-3 w-full sm:w-auto">
+          <div className="relative flex-1 sm:w-72">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              placeholder="Tìm kiếm công việc..."
+              className="pl-10 h-10 rounded-xl bg-white border-slate-200"
+              value={filters.search}
+              onChange={(e) =>
+                setFilters((f) => ({ ...f, search: e.target.value }))
+              }
+            />
+          </div>
+        </div>
+        <Button
+          onClick={() => setFormOpen(true)}
+          className="h-10 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 shadow-md shadow-indigo-200 text-white border-0 px-5"
+        >
+          <Plus className="h-4 w-4 mr-1.5" />
+          Tạo công việc
+        </Button>
+      </div>
+
+      {/* Filters */}
+      <TaskFiltersBar filters={filters} onChange={setFilters} />
+
+      {/* Kanban columns */}
+      <DragDropContext onDragEnd={handleDragEnd}>
+        <div className="flex md:grid md:grid-cols-3 gap-5 overflow-x-auto pb-4 md:pb-0 snap-x snap-mandatory md:snap-none">
+          {columns.map((col) => (
+            <div
+              key={col.id}
+              className="bg-slate-50/80 rounded-2xl p-4 border border-slate-100 min-w-[280px] md:min-w-0 snap-center"
+            >
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2">
+                  <span className="text-base">{col.emoji}</span>
+                  <h3 className="font-semibold text-sm">{col.title}</h3>
+                </div>
+                <span className={`text-xs font-semibold text-white bg-gradient-to-r ${col.gradient} rounded-full px-2.5 py-0.5 shadow-sm`}>
+                  {col.tasks.length}
+                </span>
+              </div>
+              <Droppable droppableId={col.id}>
+                {(provided, snapshot) => (
+                  <div
+                    ref={provided.innerRef}
+                    {...provided.droppableProps}
+                    className={`space-y-2.5 min-h-[120px] rounded-xl transition-colors p-1 ${
+                      snapshot.isDraggingOver ? "bg-indigo-50/60" : ""
+                    }`}
+                  >
+                    {col.tasks.map((task, index) => (
+                      <Draggable
+                        key={task.id}
+                        draggableId={task.id}
+                        index={index}
+                      >
+                        {(provided, snapshot) => (
+                          <div
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            className={
+                              snapshot.isDragging ? "opacity-90 rotate-1 scale-105" : ""
+                            }
+                          >
+                            <TaskCard
+                              task={task}
+                              onEdit={handleEdit}
+                              onDelete={handleDelete}
+                              onStatusChange={(id, status) =>
+                                updateTask(id, { status })
+                              }
+                            />
+                          </div>
+                        )}
+                      </Draggable>
+                    ))}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
+            </div>
+          ))}
+        </div>
+      </DragDropContext>
+
+      {/* Task form dialog */}
+      {formOpen && (
+        <TaskForm
+          open={formOpen}
+          onClose={handleClose}
+          onSubmit={handleSubmit}
+          task={editingTask}
+        />
+      )}
+    </div>
+  );
+}
