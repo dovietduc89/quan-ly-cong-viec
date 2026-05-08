@@ -7,7 +7,7 @@ import {
   Draggable,
   type DropResult,
 } from "@hello-pangea/dnd";
-import { Plus, Search } from "lucide-react";
+import { Plus, Search, ListTodo, Clock, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { TaskCard } from "@/components/task-card";
@@ -17,10 +17,10 @@ import { useTasks } from "@/hooks/use-tasks";
 import type { Task } from "@/lib/db/schema";
 import type { Status } from "@/lib/types";
 
-const COLUMNS: { id: Status; title: string; emoji: string; badgeColor: string; bgColor: string }[] = [
-  { id: "todo", title: "Công việc cần làm", emoji: "📋", badgeColor: "bg-amber-600", bgColor: "bg-amber-50/80 border-amber-100" },
-  { id: "in_progress", title: "Đang thực hiện", emoji: "🔄", badgeColor: "bg-blue-600", bgColor: "bg-blue-50/80 border-blue-100" },
-  { id: "done", title: "Đã hoàn thành", emoji: "✅", badgeColor: "bg-emerald-500", bgColor: "bg-emerald-50/80 border-emerald-100" },
+const COLUMNS: { id: Status; title: string; icon: React.ElementType; iconColor: string; badgeColor: string; bgColor: string }[] = [
+  { id: "todo", title: "Công việc cần làm", icon: ListTodo, iconColor: "text-amber-600", badgeColor: "bg-amber-600", bgColor: "bg-amber-50/80 border-amber-100" },
+  { id: "in_progress", title: "Đang thực hiện", icon: Clock, iconColor: "text-blue-600", badgeColor: "bg-blue-600", bgColor: "bg-blue-50/80 border-blue-100" },
+  { id: "done", title: "Đã hoàn thành", icon: CheckCircle2, iconColor: "text-emerald-500", badgeColor: "bg-emerald-500", bgColor: "bg-emerald-50/80 border-emerald-100" },
 ];
 
 export function KanbanBoard() {
@@ -172,7 +172,7 @@ export function KanbanBoard() {
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
-                  <span className="text-base">{col.emoji}</span>
+                  <col.icon className={`h-4 w-4 ${col.iconColor}`} />
                   <h3 className="font-semibold text-sm">{col.title}</h3>
                 </div>
                 <span className={`text-xs font-semibold text-white ${col.badgeColor} rounded-full px-2.5 py-0.5 shadow-sm`}>
