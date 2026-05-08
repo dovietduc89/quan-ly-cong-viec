@@ -17,7 +17,7 @@ import { vi } from "date-fns/locale";
 import Link from "next/link";
 
 export default async function DashboardPage() {
-  const session = await auth();
+  await auth();
   const now = new Date();
   const threeDaysLater = addDays(now, 3);
 
