@@ -59,7 +59,7 @@ export function TaskFiltersBar({ filters, onChange }: TaskFiltersBarProps) {
                     ? "bg-amber-500 text-white border-0 shadow-sm"
                     : p === "low"
                       ? "bg-slate-500 text-white border-0 shadow-sm"
-                      : "bg-blue-600 text-white border-0 shadow-sm"
+                      : "bg-white text-blue-600 border border-blue-600 shadow-sm"
                 : "hover:bg-slate-50"
             }`}
             onClick={() => onChange({ ...filters, priority: p })}
