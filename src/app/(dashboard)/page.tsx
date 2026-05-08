@@ -117,14 +117,14 @@ export default async function DashboardPage() {
       <div className="grid gap-4 md:grid-cols-2">
         <Card className="border border-blue-200 shadow-sm bg-sky-50 hover:shadow-md transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-base font-semibold text-sky-700">Cơ quan</CardTitle>
+            <CardTitle className="text-base font-semibold text-sky-800">Cơ quan</CardTitle>
             <div className="h-9 w-9 rounded-xl bg-sky-100 flex items-center justify-center">
-              <Briefcase className="h-4 w-4 text-sky-700" />
+              <Briefcase className="h-4 w-4 text-sky-800" />
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-sky-700">{workCount}</div>
-            <p className="text-sm text-sky-600/70 mt-1">
+            <div className="text-3xl font-bold text-sky-800">{workCount}</div>
+            <p className="text-sm text-sky-800 mt-1">
               công việc chưa hoàn thành
             </p>
           </CardContent>
@@ -132,14 +132,14 @@ export default async function DashboardPage() {
 
         <Card className="border border-emerald-200 shadow-sm bg-emerald-50 hover:shadow-md transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-base font-semibold text-emerald-700">Cá nhân</CardTitle>
+            <CardTitle className="text-base font-semibold text-emerald-800">Cá nhân</CardTitle>
             <div className="h-9 w-9 rounded-xl bg-emerald-100 flex items-center justify-center">
-              <User className="h-4 w-4 text-emerald-700" />
+              <User className="h-4 w-4 text-emerald-800" />
             </div>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-emerald-700">{personalCount}</div>
-            <p className="text-sm text-emerald-600/70 mt-1">
+            <p className="text-sm text-emerald-800 mt-1">
               công việc chưa hoàn thành
             </p>
           </CardContent>
