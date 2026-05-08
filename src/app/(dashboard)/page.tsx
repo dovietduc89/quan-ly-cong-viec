@@ -56,7 +56,7 @@ export default async function DashboardPage() {
           Xin chào Việt Đức, chúc bạn một ngày tốt lành 🍀
         </h1>
         <p className="text-muted-foreground mt-0.5">
-          Tổng quan công việc của bạn hôm nay — {format(now, "EEEE, dd/MM/yyyy", { locale: vi })}:
+          Tổng quan công việc của bạn hôm nay — {format(now, "EEEE, dd/MM/yyyy", { locale: vi })}
         </p>
       </div>
 
@@ -115,7 +115,7 @@ export default async function DashboardPage() {
 
       {/* Category breakdown */}
       <div className="grid gap-4 md:grid-cols-2">
-        <Card className="border-0 shadow-sm bg-sky-50 hover:shadow-md transition-shadow">
+        <Card className="border border-blue-200 shadow-sm bg-sky-50 hover:shadow-md transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-base font-semibold text-sky-700">Cơ quan</CardTitle>
             <div className="h-9 w-9 rounded-xl bg-sky-100 flex items-center justify-center">
@@ -130,7 +130,7 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="border-0 shadow-sm bg-emerald-50 hover:shadow-md transition-shadow">
+        <Card className="border border-emerald-200 shadow-sm bg-emerald-50 hover:shadow-md transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-base font-semibold text-emerald-700">Cá nhân</CardTitle>
             <div className="h-9 w-9 rounded-xl bg-emerald-100 flex items-center justify-center">
