@@ -47,10 +47,17 @@ export function TaskForm({ open, onClose, onSubmit, task }: TaskFormProps) {
   const [priority, setPriority] = useState<"high" | "medium" | "low">(
     (task?.priority as "high" | "medium" | "low") || "medium"
   );
+  const getDefaultDeadline = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}T23:59`;
+  };
   const [deadline, setDeadline] = useState(
     task?.deadline
       ? new Date(task.deadline).toISOString().slice(0, 16)
-      : ""
+      : getDefaultDeadline()
   );
 
   const handleSubmit = async (e: React.FormEvent) => {
