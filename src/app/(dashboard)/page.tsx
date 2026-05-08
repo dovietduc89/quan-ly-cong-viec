@@ -197,7 +197,7 @@ export default async function DashboardPage() {
                   key={t.id}
                   className="flex items-center justify-between p-3 rounded-xl bg-amber-50 text-sm"
                 >
-                  <span className="font-medium text-amber-800">{t.title}</span>
+                  <span className="font-medium text-amber-600">{t.title}</span>
                   <span className="text-amber-600 text-sm font-semibold">
                     {t.deadline ? format(new Date(t.deadline), "dd/MM/yyyy", { locale: vi }) : ""}
                   </span>
