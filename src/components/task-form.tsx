@@ -166,7 +166,7 @@ export function TaskForm({ open, onClose, onSubmit, task }: TaskFormProps) {
             <Button
               type="submit"
               disabled={loading || !title.trim()}
-              className="h-10 px-5 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 shadow-md shadow-blue-200 text-white border-0"
+              className="h-10 px-5 bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-700 hover:to-cyan-700 shadow-md shadow-indigo-200 text-white border-0"
             >
               {loading ? "Đang lưu..." : task ? "Cập nhật" : "Tạo công việc"}
             </Button>

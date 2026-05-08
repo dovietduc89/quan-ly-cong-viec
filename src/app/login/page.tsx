@@ -14,15 +14,15 @@ export default async function LoginPage({
   const error = searchParams.error;
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-950 via-slate-900 to-cyan-950 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-950 via-slate-900 to-cyan-950 p-4">
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM2N2UwZjkiIGZpbGwtb3BhY2l0eT0iMC4wOCI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMS41Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-60" />
       <Card className="w-full max-w-sm shadow-xl border-0 shadow-blue-900/50 relative">
         <CardHeader className="text-center space-y-4 pb-2 pt-8">
-          <div className="mx-auto flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-500 shadow-lg shadow-blue-500/30">
+          <div className="mx-auto flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-indigo-600 to-cyan-600 shadow-lg shadow-indigo-500/30">
             <CheckSquare className="h-10 w-10 text-white" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            <h1 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-indigo-300 to-cyan-400 bg-clip-text text-transparent">
               Quản Lý Công Việc
             </h1>
             <p className="text-sm text-muted-foreground mt-1.5">

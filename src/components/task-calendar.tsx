@@ -69,7 +69,7 @@ export function TaskCalendarView() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-2 border-blue-200 border-t-blue-600" />
+        <div className="animate-spin rounded-full h-8 w-8 border-2 border-indigo-200 border-t-indigo-600" />
       </div>
     );
   }
@@ -119,7 +119,7 @@ export function TaskCalendarView() {
         </div>
         <Button
           onClick={() => setFormOpen(true)}
-          className="h-10 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 shadow-md shadow-blue-200 text-white border-0 px-5"
+          className="h-10 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-700 hover:to-cyan-700 shadow-md shadow-indigo-200 text-white border-0 px-5"
         >
           <Plus className="h-4 w-4 mr-1.5" />
           Tạo công việc
@@ -157,7 +157,7 @@ export function TaskCalendarView() {
                 <div
                   className={`text-xs font-semibold mb-1 h-7 w-7 flex items-center justify-center rounded-lg ${
                     today
-                      ? "bg-gradient-to-br from-blue-600 to-cyan-500 text-white shadow-sm"
+                      ? "bg-gradient-to-br from-indigo-600 to-cyan-600 text-white shadow-sm"
                       : !inMonth
                         ? "text-muted-foreground/40"
                         : "text-foreground"

@@ -211,15 +211,15 @@ export default async function DashboardPage() {
       {allTasks.length === 0 && (
         <Card className="border-0 shadow-sm bg-white">
           <CardContent className="py-16 text-center">
-            <div className="mx-auto w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center mb-4">
-              <ListTodo className="h-8 w-8 text-blue-400" />
+            <div className="mx-auto w-16 h-16 rounded-2xl bg-indigo-50 flex items-center justify-center mb-4">
+              <ListTodo className="h-8 w-8 text-indigo-400" />
             </div>
             <h3 className="font-semibold text-lg mb-1">Chưa có công việc nào</h3>
             <p className="text-muted-foreground text-sm mb-6">
               Bắt đầu thêm công việc đầu tiên của bạn.
             </p>
             <Link href="/tasks">
-              <button className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 px-5 py-2.5 text-sm font-semibold text-white hover:from-blue-700 hover:to-cyan-600 transition-all shadow-md shadow-blue-200">
+              <button className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 px-5 py-2.5 text-sm font-semibold text-white hover:from-indigo-700 hover:to-cyan-700 transition-all shadow-md shadow-indigo-200">
                 Tạo công việc mới
                 <ArrowRight className="h-4 w-4" />
               </button>
