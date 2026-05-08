@@ -96,7 +96,7 @@ export function TaskListView() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-2 border-indigo-200 border-t-indigo-600" />
+        <div className="animate-spin rounded-full h-8 w-8 border-2 border-blue-200 border-t-blue-600" />
       </div>
     );
   }
@@ -139,7 +139,7 @@ export function TaskListView() {
         </div>
         <Button
           onClick={() => setFormOpen(true)}
-          className="h-10 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-700 hover:to-cyan-700 shadow-md shadow-indigo-200 text-white border-0 px-5"
+          className="h-10 rounded-xl bg-blue-600 hover:bg-blue-700 shadow-md shadow-blue-200 text-white border-0 px-5"
         >
           <Plus className="h-4 w-4 mr-1.5" />
           Tạo công việc
@@ -167,7 +167,7 @@ export function TaskListView() {
                 className={`flex-shrink-0 h-5 w-5 rounded-full border-2 flex items-center justify-center transition-all duration-200 ${
                   task.status === "done"
                     ? "bg-emerald-500 border-emerald-500 text-white scale-110"
-                    : "border-slate-300 hover:border-indigo-400 hover:bg-indigo-50"
+                    : "border-slate-300 hover:border-blue-400 hover:bg-blue-50"
                 }`}
               >
                 {task.status === "done" && <CheckCircle2 className="h-3 w-3" />}

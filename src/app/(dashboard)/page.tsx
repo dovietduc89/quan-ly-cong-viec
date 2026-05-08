@@ -115,7 +115,7 @@ export default async function DashboardPage() {
 
       {/* Category breakdown */}
       <div className="grid gap-4 md:grid-cols-2">
-        <Card className="border-0 shadow-sm bg-gradient-to-br from-sky-50 to-blue-50 hover:shadow-md transition-shadow">
+        <Card className="border-0 shadow-sm bg-sky-50 hover:shadow-md transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-sky-700">Cơ quan</CardTitle>
             <div className="h-9 w-9 rounded-xl bg-sky-100 flex items-center justify-center">
@@ -130,7 +130,7 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="border-0 shadow-sm bg-gradient-to-br from-emerald-50 to-green-50 hover:shadow-md transition-shadow">
+        <Card className="border-0 shadow-sm bg-emerald-50 hover:shadow-md transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-emerald-700">Cá nhân</CardTitle>
             <div className="h-9 w-9 rounded-xl bg-emerald-100 flex items-center justify-center">
@@ -211,15 +211,15 @@ export default async function DashboardPage() {
       {allTasks.length === 0 && (
         <Card className="border-0 shadow-sm bg-white">
           <CardContent className="py-16 text-center">
-            <div className="mx-auto w-16 h-16 rounded-2xl bg-indigo-50 flex items-center justify-center mb-4">
-              <ListTodo className="h-8 w-8 text-indigo-400" />
+            <div className="mx-auto w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center mb-4">
+              <ListTodo className="h-8 w-8 text-blue-400" />
             </div>
             <h3 className="font-semibold text-lg mb-1">Chưa có công việc nào</h3>
             <p className="text-muted-foreground text-sm mb-6">
               Bắt đầu thêm công việc đầu tiên của bạn.
             </p>
             <Link href="/tasks">
-              <button className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 px-5 py-2.5 text-sm font-semibold text-white hover:from-indigo-700 hover:to-cyan-700 transition-all shadow-md shadow-indigo-200">
+              <button className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 transition-all shadow-md shadow-blue-200">
                 Tạo công việc mới
                 <ArrowRight className="h-4 w-4" />
               </button>

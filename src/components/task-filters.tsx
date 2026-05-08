@@ -32,7 +32,7 @@ export function TaskFiltersBar({ filters, onChange }: TaskFiltersBarProps) {
             size="sm"
             className={`h-8 text-xs rounded-full px-3.5 ${
               filters.category === cat
-                ? "bg-gradient-to-r from-blue-600 to-cyan-500 text-white border-0 shadow-sm"
+                ? "bg-blue-600 text-white border-0 shadow-sm"
                 : "hover:bg-slate-50"
             }`}
             onClick={() => onChange({ ...filters, category: cat })}
@@ -59,7 +59,7 @@ export function TaskFiltersBar({ filters, onChange }: TaskFiltersBarProps) {
                     ? "bg-amber-500 text-white border-0 shadow-sm"
                     : p === "low"
                       ? "bg-slate-500 text-white border-0 shadow-sm"
-                      : "bg-gradient-to-r from-indigo-600 to-cyan-600 text-white border-0 shadow-sm"
+                      : "bg-blue-600 text-white border-0 shadow-sm"
                 : "hover:bg-slate-50"
             }`}
             onClick={() => onChange({ ...filters, priority: p })}

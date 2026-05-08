@@ -46,7 +46,7 @@ export function Navbar() {
           </SheetTrigger>
           <SheetContent side="left" className="w-72 p-6">
             <div className="flex items-center gap-2.5 mb-8">
-              <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 to-cyan-600">
+              <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-blue-600">
                 <CheckSquare className="h-5 w-5 text-white" />
               </div>
               <span className="font-bold text-lg">Quản Lý Công Việc</span>
@@ -59,7 +59,7 @@ export function Navbar() {
                   className={cn(
                     "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition-all duration-200",
                     pathname === link.href
-                      ? "bg-indigo-50 text-indigo-700 font-semibold shadow-sm"
+                      ? "bg-blue-50 text-blue-700 font-semibold shadow-sm"
                       : "text-muted-foreground hover:bg-slate-50 hover:text-foreground"
                   )}
                 >
@@ -73,10 +73,10 @@ export function Navbar() {
 
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 mr-8">
-          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-600 to-cyan-600 shadow-sm">
+          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-600 shadow-sm">
             <CheckSquare className="h-4.5 w-4.5 text-white" />
           </div>
-          <span className="font-bold text-lg hidden sm:block bg-gradient-to-r from-indigo-600 to-cyan-500 bg-clip-text text-transparent">
+          <span className="font-bold text-lg hidden sm:block text-blue-600">
             Quản Lý Công Việc
           </span>
         </Link>
@@ -90,7 +90,7 @@ export function Navbar() {
               className={cn(
                 "flex items-center gap-2 rounded-xl px-3.5 py-2 text-sm transition-all duration-200",
                 pathname === link.href
-                  ? "bg-indigo-50 text-indigo-700 font-semibold shadow-sm"
+                  ? "bg-blue-50 text-blue-700 font-semibold shadow-sm"
                   : "text-muted-foreground hover:bg-slate-50 hover:text-foreground"
               )}
             >
@@ -104,13 +104,13 @@ export function Navbar() {
         <div className="ml-auto">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="relative h-9 w-9 rounded-full ring-2 ring-indigo-100 hover:ring-indigo-200 transition-all">
+              <Button variant="ghost" className="relative h-9 w-9 rounded-full ring-2 ring-blue-100 hover:ring-blue-200 transition-all">
                 <Avatar className="h-9 w-9">
                   <AvatarImage
                     src={session?.user?.image || ""}
                     alt={session?.user?.name || ""}
                   />
-                  <AvatarFallback className="bg-gradient-to-br from-indigo-500 to-cyan-500 text-white text-xs font-semibold">
+                  <AvatarFallback className="bg-blue-500 text-white text-xs font-semibold">
                     {session?.user?.name?.charAt(0) || "U"}
                   </AvatarFallback>
                 </Avatar>

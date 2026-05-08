@@ -17,10 +17,10 @@ import { useTasks } from "@/hooks/use-tasks";
 import type { Task } from "@/lib/db/schema";
 import type { Status } from "@/lib/types";
 
-const COLUMNS: { id: Status; title: string; emoji: string; gradient: string }[] = [
-  { id: "todo", title: "Cần làm", emoji: "📋", gradient: "from-slate-400 to-slate-500" },
-  { id: "in_progress", title: "Đang làm", emoji: "🔄", gradient: "from-indigo-400 to-indigo-600" },
-  { id: "done", title: "Hoàn thành", emoji: "✅", gradient: "from-emerald-400 to-green-500" },
+const COLUMNS: { id: Status; title: string; emoji: string; badgeColor: string }[] = [
+  { id: "todo", title: "Cần làm", emoji: "📋", badgeColor: "bg-slate-500" },
+  { id: "in_progress", title: "Đang làm", emoji: "🔄", badgeColor: "bg-blue-600" },
+  { id: "done", title: "Hoàn thành", emoji: "✅", badgeColor: "bg-emerald-500" },
 ];
 
 export function KanbanBoard() {
@@ -119,7 +119,7 @@ export function KanbanBoard() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-2 border-indigo-200 border-t-indigo-600" />
+        <div className="animate-spin rounded-full h-8 w-8 border-2 border-blue-200 border-t-blue-600" />
       </div>
     );
   }
@@ -152,7 +152,7 @@ export function KanbanBoard() {
         </div>
         <Button
           onClick={() => setFormOpen(true)}
-          className="h-10 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-700 hover:to-cyan-700 shadow-md shadow-indigo-200 text-white border-0 px-5"
+          className="h-10 rounded-xl bg-blue-600 hover:bg-blue-700 shadow-md shadow-blue-200 text-white border-0 px-5"
         >
           <Plus className="h-4 w-4 mr-1.5" />
           Tạo công việc
@@ -175,7 +175,7 @@ export function KanbanBoard() {
                   <span className="text-base">{col.emoji}</span>
                   <h3 className="font-semibold text-sm">{col.title}</h3>
                 </div>
-                <span className={`text-xs font-semibold text-white bg-gradient-to-r ${col.gradient} rounded-full px-2.5 py-0.5 shadow-sm`}>
+                <span className={`text-xs font-semibold text-white ${col.badgeColor} rounded-full px-2.5 py-0.5 shadow-sm`}>
                   {col.tasks.length}
                 </span>
               </div>
@@ -185,7 +185,7 @@ export function KanbanBoard() {
                     ref={provided.innerRef}
                     {...provided.droppableProps}
                     className={`space-y-2.5 min-h-[120px] rounded-xl transition-colors p-1 ${
-                      snapshot.isDraggingOver ? "bg-indigo-50/60" : ""
+                      snapshot.isDraggingOver ? "bg-blue-50/60" : ""
                     }`}
                   >
                     {col.tasks.map((task, index) => (
