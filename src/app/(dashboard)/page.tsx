@@ -98,15 +98,15 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className={`border-0 shadow-sm hover:shadow-md transition-shadow ${overdue.length > 0 ? "bg-rose-50 ring-1 ring-rose-200" : "bg-white"}`}>
+        <Card className={`border-0 shadow-sm hover:shadow-md transition-shadow ${overdue.length > 0 ? "bg-amber-50 ring-1 ring-amber-200" : "bg-white"}`}>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">Quá hạn</CardTitle>
-            <div className={`h-9 w-9 rounded-xl flex items-center justify-center ${overdue.length > 0 ? "bg-rose-100" : "bg-slate-100"}`}>
-              <AlertTriangle className={`h-4 w-4 ${overdue.length > 0 ? "text-rose-500" : "text-slate-400"}`} />
+            <div className="h-9 w-9 rounded-xl bg-amber-100 flex items-center justify-center">
+              <AlertTriangle className="h-4 w-4 text-amber-600" />
             </div>
           </CardHeader>
           <CardContent>
-            <div className={`text-3xl font-bold ${overdue.length > 0 ? "text-rose-600" : ""}`}>
+            <div className="text-3xl font-bold text-amber-700">
               {overdue.length}
             </div>
           </CardContent>

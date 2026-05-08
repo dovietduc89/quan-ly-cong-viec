@@ -18,7 +18,7 @@ import type { Task } from "@/lib/db/schema";
 import type { Status } from "@/lib/types";
 
 const COLUMNS: { id: Status; title: string; emoji: string; badgeColor: string; bgColor: string }[] = [
-  { id: "todo", title: "Công việc cần làm", emoji: "📋", badgeColor: "bg-slate-500", bgColor: "bg-slate-50/80 border-slate-100" },
+  { id: "todo", title: "Công việc cần làm", emoji: "📋", badgeColor: "bg-amber-600", bgColor: "bg-amber-50/80 border-amber-100" },
   { id: "in_progress", title: "Đang thực hiện", emoji: "🔄", badgeColor: "bg-blue-600", bgColor: "bg-blue-50/80 border-blue-100" },
   { id: "done", title: "Đã hoàn thành", emoji: "✅", badgeColor: "bg-emerald-500", bgColor: "bg-emerald-50/80 border-emerald-100" },
 ];
