@@ -173,7 +173,7 @@ export function KanbanBoard() {
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
                   <col.icon className={`h-4 w-4 ${col.iconColor}`} />
-                  <h3 className="font-semibold text-sm">{col.title}</h3>
+                  <h3 className="font-semibold text-base">{col.title}</h3>
                 </div>
                 <span className={`text-xs font-semibold text-white ${col.badgeColor} rounded-full px-2.5 py-0.5 shadow-sm`}>
                   {col.tasks.length}
