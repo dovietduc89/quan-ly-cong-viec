@@ -62,9 +62,9 @@ export default async function DashboardPage() {
 
       {/* Stats grid */}
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-        <Card className="border-0 shadow-sm bg-white hover:shadow-md transition-shadow">
+        <Card className="border border-slate-100 shadow-sm bg-white hover:shadow-md transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Cần làm</CardTitle>
+            <CardTitle className="text-base font-semibold text-muted-foreground">Cần làm</CardTitle>
             <div className="h-9 w-9 rounded-xl bg-slate-100 flex items-center justify-center">
               <ListTodo className="h-4 w-4 text-slate-600" />
             </div>
@@ -74,9 +74,9 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="border-0 shadow-sm bg-white hover:shadow-md transition-shadow">
+        <Card className="border border-blue-100 shadow-sm bg-white hover:shadow-md transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Đang làm</CardTitle>
+            <CardTitle className="text-base font-semibold text-muted-foreground">Đang làm</CardTitle>
             <div className="h-9 w-9 rounded-xl bg-blue-50 flex items-center justify-center">
               <Clock className="h-4 w-4 text-blue-500" />
             </div>
@@ -86,9 +86,9 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="border-0 shadow-sm bg-white hover:shadow-md transition-shadow">
+        <Card className="border border-emerald-100 shadow-sm bg-white hover:shadow-md transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Hoàn thành</CardTitle>
+            <CardTitle className="text-base font-semibold text-muted-foreground">Hoàn thành</CardTitle>
             <div className="h-9 w-9 rounded-xl bg-emerald-50 flex items-center justify-center">
               <CheckCircle2 className="h-4 w-4 text-emerald-500" />
             </div>
@@ -100,7 +100,7 @@ export default async function DashboardPage() {
 
         <Card className={`border-0 shadow-sm hover:shadow-md transition-shadow ${overdue.length > 0 ? "bg-amber-50 ring-1 ring-amber-200" : "bg-white"}`}>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Quá hạn</CardTitle>
+            <CardTitle className="text-base font-semibold text-muted-foreground">Quá hạn</CardTitle>
             <div className="h-9 w-9 rounded-xl bg-amber-100 flex items-center justify-center">
               <AlertTriangle className="h-4 w-4 text-amber-600" />
             </div>
@@ -117,14 +117,14 @@ export default async function DashboardPage() {
       <div className="grid gap-4 md:grid-cols-2">
         <Card className="border-0 shadow-sm bg-sky-50 hover:shadow-md transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-sky-700">Cơ quan</CardTitle>
+            <CardTitle className="text-base font-semibold text-sky-700">Cơ quan</CardTitle>
             <div className="h-9 w-9 rounded-xl bg-sky-100 flex items-center justify-center">
               <Briefcase className="h-4 w-4 text-sky-600" />
             </div>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-sky-700">{workCount}</div>
-            <p className="text-xs text-sky-600/70 mt-1">
+            <p className="text-sm text-sky-600/70 mt-1">
               công việc chưa hoàn thành
             </p>
           </CardContent>
@@ -132,14 +132,14 @@ export default async function DashboardPage() {
 
         <Card className="border-0 shadow-sm bg-emerald-50 hover:shadow-md transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-emerald-700">Cá nhân</CardTitle>
+            <CardTitle className="text-base font-semibold text-emerald-700">Cá nhân</CardTitle>
             <div className="h-9 w-9 rounded-xl bg-emerald-100 flex items-center justify-center">
               <User className="h-4 w-4 text-emerald-600" />
             </div>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-emerald-700">{personalCount}</div>
-            <p className="text-xs text-emerald-600/70 mt-1">
+            <p className="text-sm text-emerald-600/70 mt-1">
               công việc chưa hoàn thành
             </p>
           </CardContent>
@@ -163,7 +163,7 @@ export default async function DashboardPage() {
                   className="flex items-center justify-between p-3 rounded-xl bg-rose-50 text-sm"
                 >
                   <span className="font-medium text-rose-800">{t.title}</span>
-                  <span className="text-rose-600 text-xs font-semibold">
+                  <span className="text-rose-600 text-sm font-semibold">
                     {t.deadline ? format(new Date(t.deadline), "dd/MM/yyyy", { locale: vi }) : ""}
                   </span>
                 </div>
@@ -198,7 +198,7 @@ export default async function DashboardPage() {
                   className="flex items-center justify-between p-3 rounded-xl bg-amber-50 text-sm"
                 >
                   <span className="font-medium text-amber-800">{t.title}</span>
-                  <span className="text-amber-600 text-xs font-semibold">
+                  <span className="text-amber-600 text-sm font-semibold">
                     {t.deadline ? format(new Date(t.deadline), "dd/MM/yyyy", { locale: vi }) : ""}
                   </span>
                 </div>
