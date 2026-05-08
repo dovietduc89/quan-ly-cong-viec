@@ -74,11 +74,11 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="border border-blue-100 shadow-sm bg-white hover:shadow-md transition-shadow">
+        <Card className="border border-blue-200 shadow-sm bg-white hover:shadow-md transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-base font-semibold text-muted-foreground">Đang làm</CardTitle>
             <div className="h-9 w-9 rounded-xl bg-blue-50 flex items-center justify-center">
-              <Clock className="h-4 w-4 text-blue-500" />
+              <Clock className="h-4 w-4 text-blue-600" />
             </div>
           </CardHeader>
           <CardContent>
@@ -86,11 +86,11 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="border border-emerald-100 shadow-sm bg-white hover:shadow-md transition-shadow">
+        <Card className="border border-emerald-200 shadow-sm bg-white hover:shadow-md transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-base font-semibold text-muted-foreground">Hoàn thành</CardTitle>
             <div className="h-9 w-9 rounded-xl bg-emerald-50 flex items-center justify-center">
-              <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+              <CheckCircle2 className="h-4 w-4 text-emerald-600" />
             </div>
           </CardHeader>
           <CardContent>
@@ -98,7 +98,7 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className={`border border-amber-100 shadow-sm hover:shadow-md transition-shadow ${overdue.length > 0 ? "bg-amber-50" : "bg-white"}`}>
+        <Card className={`border border-amber-200 shadow-sm hover:shadow-md transition-shadow ${overdue.length > 0 ? "bg-amber-50" : "bg-white"}`}>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-base font-semibold text-muted-foreground">Quá hạn</CardTitle>
             <div className="h-9 w-9 rounded-xl bg-amber-100 flex items-center justify-center">
@@ -106,7 +106,7 @@ export default async function DashboardPage() {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-amber-700">
+            <div className="text-3xl font-bold text-amber-600">
               {overdue.length}
             </div>
           </CardContent>
@@ -119,7 +119,7 @@ export default async function DashboardPage() {
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-base font-semibold text-sky-700">Cơ quan</CardTitle>
             <div className="h-9 w-9 rounded-xl bg-sky-100 flex items-center justify-center">
-              <Briefcase className="h-4 w-4 text-sky-600" />
+              <Briefcase className="h-4 w-4 text-sky-700" />
             </div>
           </CardHeader>
           <CardContent>
@@ -134,7 +134,7 @@ export default async function DashboardPage() {
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-base font-semibold text-emerald-700">Cá nhân</CardTitle>
             <div className="h-9 w-9 rounded-xl bg-emerald-100 flex items-center justify-center">
-              <User className="h-4 w-4 text-emerald-600" />
+              <User className="h-4 w-4 text-emerald-700" />
             </div>
           </CardHeader>
           <CardContent>
