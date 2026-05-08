@@ -49,13 +49,11 @@ export default async function DashboardPage() {
     (t) => t.category === "personal" && t.status !== "done"
   ).length;
 
-  const firstName = session?.user?.name?.split(" ").pop() || "bạn";
-
   return (
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold tracking-tight">
-          Xin chào {firstName}, chúc bạn một ngày tốt lành! 🌟
+          Xin chào Việt Đức, chúc bạn một ngày tốt lành! 🌟
         </h1>
         <p className="text-muted-foreground mt-0.5">
           Tổng quan công việc của bạn hôm nay — {format(now, "EEEE, dd/MM/yyyy", { locale: vi })}.
