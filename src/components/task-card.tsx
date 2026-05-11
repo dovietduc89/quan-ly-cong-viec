@@ -49,7 +49,11 @@ export function TaskCard({ task, onEdit, onDelete, onStatusChange }: TaskCardPro
 
   const handleDelete = async () => {
     setDeleting(true);
-    await onDelete(task.id);
+    try {
+      await onDelete(task.id);
+    } finally {
+      setDeleting(false);
+    }
   };
 
   return (
