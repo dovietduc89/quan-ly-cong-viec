@@ -168,7 +168,7 @@ export function KanbanBoard() {
           {columns.map((col) => (
             <div
               key={col.id}
-              className={`${col.bgColor} rounded-2xl p-4 border min-w-[280px] md:min-w-0 snap-center`}
+              className={`${col.bgColor} rounded-2xl p-4 border min-w-[280px] md:min-w-0 snap-center flex flex-col`}
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
@@ -184,7 +184,7 @@ export function KanbanBoard() {
                   <div
                     ref={provided.innerRef}
                     {...provided.droppableProps}
-                    className={`space-y-2.5 min-h-[120px] rounded-xl transition-colors p-1 ${snapshot.isDraggingOver ? "bg-blue-50/60" : ""
+                    className={`space-y-2.5 min-h-[120px] flex-1 rounded-xl transition-colors p-1 ${snapshot.isDraggingOver ? "bg-blue-50/60" : ""
                       }`}
                   >
                     {col.tasks.map((task, index) => (
