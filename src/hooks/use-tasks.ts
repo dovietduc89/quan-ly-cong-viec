@@ -28,7 +28,7 @@ export function useTasks() {
 
   const createTask = async (data: {
     title: string;
-    description?: string;
+    description?: string | null;
     category: "work" | "personal";
     priority: "high" | "medium" | "low";
     status?: "todo" | "in_progress" | "done";
