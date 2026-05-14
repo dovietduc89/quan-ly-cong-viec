@@ -25,7 +25,7 @@ interface TaskFormProps {
   onClose: () => void;
   onSubmit: (data: {
     title: string;
-    description?: string;
+    description?: string | null;
     category: "work" | "personal";
     priority: "high" | "medium" | "low";
     status?: "todo" | "in_progress" | "done";
@@ -68,7 +68,7 @@ export function TaskForm({ open, onClose, onSubmit, task }: TaskFormProps) {
     try {
       await onSubmit({
         title: title.trim(),
-        description: description.trim() || undefined,
+        description: description.trim() || null,
         category,
         priority,
         status,
@@ -108,7 +108,7 @@ export function TaskForm({ open, onClose, onSubmit, task }: TaskFormProps) {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Mô tả chi tiết (tuỳ chọn)..."
-              rows={3}
+              rows={6}
             />
           </div>
 
