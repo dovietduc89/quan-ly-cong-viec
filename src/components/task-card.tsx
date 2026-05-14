@@ -58,6 +58,7 @@ export function TaskCard({ task, onEdit, onDelete, onStatusChange }: TaskCardPro
 
   return (
     <Card
+      onClick={() => onEdit(task)}
       className={`p-3.5 hover:shadow-md transition-all duration-200 cursor-pointer group border-0 shadow-sm ${
         isOverdue ? "ring-1 ring-rose-200 bg-rose-50/40" : "bg-white"
       }`}
@@ -113,6 +114,7 @@ export function TaskCard({ task, onEdit, onDelete, onStatusChange }: TaskCardPro
           )}
         </div>
 
+        <div onClick={(e) => e.stopPropagation()}>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
@@ -166,6 +168,7 @@ export function TaskCard({ task, onEdit, onDelete, onStatusChange }: TaskCardPro
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+        </div>
       </div>
     </Card>
   );
