@@ -94,24 +94,41 @@ export function TaskCard({ task, onEdit, onDelete, onStatusChange }: TaskCardPro
             </Badge>
           </div>
 
-          {task.deadline && (
-            <div
-              className={`flex items-center gap-1.5 mt-2.5 text-[11px] ${
-                isOverdue
-                  ? "text-rose-600 font-semibold"
-                  : isDueToday
-                    ? "text-amber-600 font-semibold"
-                    : "text-muted-foreground"
-              }`}
+          <div className="flex items-center justify-between mt-2.5">
+            {task.deadline ? (
+              <div
+                className={`flex items-center gap-1.5 text-[11px] ${
+                  isOverdue
+                    ? "text-rose-600 font-semibold"
+                    : isDueToday
+                      ? "text-amber-600 font-semibold"
+                      : "text-muted-foreground"
+                }`}
+              >
+                {isOverdue ? (
+                  <AlertCircle className="h-3 w-3" />
+                ) : (
+                  <Clock className="h-3 w-3" />
+                )}
+                {format(new Date(task.deadline), "dd/MM/yyyy HH:mm", { locale: vi })}
+              </div>
+            ) : (
+              <div />
+            )}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                if (window.confirm("Bạn có chắc muốn xoá công việc này?")) {
+                  handleDelete();
+                }
+              }}
+              disabled={deleting}
+              className="text-slate-300 hover:text-rose-500 transition-colors p-0.5"
+              title="Xoá công việc"
             >
-              {isOverdue ? (
-                <AlertCircle className="h-3 w-3" />
-              ) : (
-                <Clock className="h-3 w-3" />
-              )}
-              {format(new Date(task.deadline), "dd/MM/yyyy HH:mm", { locale: vi })}
-            </div>
-          )}
+              <Trash2 className="h-3.5 w-3.5" />
+            </button>
+          </div>
         </div>
 
         <div onClick={(e) => e.stopPropagation()}>
