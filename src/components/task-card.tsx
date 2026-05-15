@@ -123,7 +123,7 @@ export function TaskCard({ task, onEdit, onDelete, onStatusChange }: TaskCardPro
                 }
               }}
               disabled={deleting}
-              className="text-slate-300 hover:text-rose-500 transition-colors p-0.5"
+              className="text-slate-300 hover:text-rose-500 transition-colors"
               title="Xoá công việc"
             >
               <Trash2 className="h-3.5 w-3.5" />
