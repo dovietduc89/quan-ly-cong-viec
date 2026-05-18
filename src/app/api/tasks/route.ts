@@ -7,7 +7,7 @@ import { z } from "zod";
 
 const createTaskSchema = z.object({
   title: z.string().trim().min(1).max(500),
-  description: z.string().max(5000).optional(),
+  description: z.string().max(5000).optional().nullable(),
   category: z.enum(["work", "personal"]),
   priority: z.enum(["high", "medium", "low"]),
   status: z.enum(["todo", "in_progress", "done"]).optional(),
